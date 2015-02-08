@@ -4,7 +4,7 @@ class InvalidLoginCredentialsException extends \RuntimeException
 {
 }
 
-class TooMuchLoginAttemptsException extends \RuntimeException
+class TooManyLoginAttemptsException extends \RuntimeException
 {
 }
 
@@ -40,12 +40,12 @@ class UsersLogin
         }
 
         // ...
-        // Some validation to check if the user has attempted too much times to login
+        // Some validation to check if the user has attempted too many times to login
         // ...
-        $hasTooMuchLoginAttempts = false;
+        $hasTooManyLoginAttempts = false;
 
-        if ($hasTooMuchLoginAttempts) {
-            throw new TooMuchLoginAttemptsException();
+        if ($hasTooManyLoginAttempts) {
+            throw new TooManyLoginAttemptsException();
         }
     }
 
@@ -54,11 +54,11 @@ class UsersLogin
         try {
             $this->checkLogin();
         }
-        catch (InvalidLoginCredentialsException $tooMuchLoginAttemptsException) {
+        catch (InvalidLoginCredentialsException $tooManyLoginAttemptsException) {
             $this->errorLogger->log("Invalid credentials");
         }
-        catch (TooMuchLoginAttemptsException $tooMuchLoginAttemptsException) {
-            $this->errorLogger->log("Too much login attempts");
+        catch (TooManyLoginAttemptsException $tooManyLoginAttemptsException) {
+            $this->errorLogger->log("Too many login attempts");
         }
 
         // Continue with the user login

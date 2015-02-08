@@ -32,11 +32,11 @@ class UsersLogin
         }
 
         // ...
-        // Some validation to check if the user has attempted too much times to login
+        // Some validation to check if the user has attempted too many times to login
         // ...
-        $hasTooMuchLoginAttempts = false;
+        $hasTooManyLoginAttempts = false;
 
-        if ($hasTooMuchLoginAttempts) {
+        if ($hasTooManyLoginAttempts) {
             return -2;
         }
 
@@ -50,7 +50,7 @@ class UsersLogin
                 $this->errorLogger->log("Invalid credentials");
                 break;
             case -2:
-                $this->errorLogger->log("Too much login attempts");
+                $this->errorLogger->log("Too many login attempts");
                 break;
             default:
                 // Successful scenario, log in the user

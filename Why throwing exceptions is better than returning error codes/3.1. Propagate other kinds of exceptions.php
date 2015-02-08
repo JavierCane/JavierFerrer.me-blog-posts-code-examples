@@ -11,7 +11,7 @@ class ErrorLogger
 class UsersLogin
 {
     const INVALID_LOGIN_CREDENTIALS = -1;
-    const TOO_MUCH_LOGIN_ATTEMPTS = -2;
+    const TOO_MANY_LOGIN_ATTEMPTS = -2;
 
     /**
      * @var ErrorLogger
@@ -35,12 +35,12 @@ class UsersLogin
         }
 
         // ...
-        // Some validation to check if the user has attempted too much times to login
+        // Some validation to check if the user has attempted too many times to login
         // ...
-        $hasTooMuchLoginAttempts = false;
+        $hasTooManyLoginAttempts = false;
 
-        if ($hasTooMuchLoginAttempts) {
-            throw new \RuntimeException("Too much login attempts", self::TOO_MUCH_LOGIN_ATTEMPTS);
+        if ($hasTooManyLoginAttempts) {
+            throw new \RuntimeException("Too many login attempts", self::TOO_MANY_LOGIN_ATTEMPTS);
         }
     }
 
@@ -54,8 +54,8 @@ class UsersLogin
                 case self::INVALID_LOGIN_CREDENTIALS:
                     $this->errorLogger->log("Invalid credentials");
                     break;
-                case self::TOO_MUCH_LOGIN_ATTEMPTS:
-                    $this->errorLogger->log("Too much login attempts");
+                case self::TOO_MANY_LOGIN_ATTEMPTS:
+                    $this->errorLogger->log("Too many login attempts");
                     break;
                 default:
                     throw $loginException;

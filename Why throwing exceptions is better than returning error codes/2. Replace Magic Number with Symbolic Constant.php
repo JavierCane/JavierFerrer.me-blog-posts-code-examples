@@ -12,7 +12,7 @@ class UsersLogin
 {
     const LOGIN_SUCCESSFUL = 1;
     const INVALID_LOGIN_CREDENTIALS = -1;
-    const TOO_MUCH_LOGIN_ATTEMPTS = -2;
+    const TOO_MANY_LOGIN_ATTEMPTS = -2;
 
     /**
      * @var ErrorLogger
@@ -36,12 +36,12 @@ class UsersLogin
         }
 
         // ...
-        // Some validation to check if the user has attempted too much times to login
+        // Some validation to check if the user has attempted too many times to login
         // ...
-        $hasTooMuchLoginAttempts = false;
+        $hasTooManyLoginAttempts = false;
 
-        if ($hasTooMuchLoginAttempts) {
-            return self::TOO_MUCH_LOGIN_ATTEMPTS;
+        if ($hasTooManyLoginAttempts) {
+            return self::TOO_MANY_LOGIN_ATTEMPTS;
         }
 
         return self::LOGIN_SUCCESSFUL;
@@ -53,8 +53,8 @@ class UsersLogin
             case self::INVALID_LOGIN_CREDENTIALS:
                 $this->errorLogger->log("Invalid credentials");
                 break;
-            case self::TOO_MUCH_LOGIN_ATTEMPTS:
-                $this->errorLogger->log("Too much login attempts");
+            case self::TOO_MANY_LOGIN_ATTEMPTS:
+                $this->errorLogger->log("Too many login attempts");
                 break;
             default:
                 // Successful scenario, log in the user

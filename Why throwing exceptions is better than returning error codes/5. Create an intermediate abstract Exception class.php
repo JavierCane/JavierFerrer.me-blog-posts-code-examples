@@ -10,9 +10,9 @@ class InvalidLoginCredentialsException extends InvalidLoginException
     protected $code = 2052;
 }
 
-class TooMuchLoginAttemptsException extends InvalidLoginException
+class TooManyLoginAttemptsException extends InvalidLoginException
 {
-    protected $message = 'Too much login attempts';
+    protected $message = 'Too many login attempts';
     protected $code = 2051;
 }
 
@@ -54,12 +54,12 @@ class UsersLogin
         }
 
         // ...
-        // Some validation to check if the user has attempted too much times to login
+        // Some validation to check if the user has attempted too many times to login
         // ...
-        $hasTooMuchLoginAttempts = false;
+        $hasTooManyLoginAttempts = false;
 
-        if ($hasTooMuchLoginAttempts) {
-            throw new TooMuchLoginAttemptsException();
+        if ($hasTooManyLoginAttempts) {
+            throw new TooManyLoginAttemptsException();
         }
 
         // ...
